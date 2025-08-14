@@ -48,57 +48,6 @@ The queue supports typical operations such as `enqueue`, `dequeue`, `peek`, and 
 
 ---
 
-## Compilation
-
-Use the provided `Makefile`:
-
-```bash
-make all        # Compiles test1.x and test2.x
-make clean      # Removes object files and executables
-The Makefile uses the following flags for safety and standard compliance:
-
--ansi -pedantic-errors -Wall -Werror -fstack-protector-all
-
-Running Tests
-bash
-Copy
-Edit
-./test1.x
-# Output: Every assertion succeeded resoundingly!
-
-./test2.x
-# Output: Every assertion succeeded resoundingly!
-Both tests ensure that:
-
-The queue initializes correctly.
-
-Elements are removed in descending priority order.
-
-Queue operations work as expected.
-
-Usage Example
-c
-Copy
-Edit
-#include "prio-q.h"
-#include <stdio.h>
-
-int main(void) {
-    Prio_que pq;
-    init(&pq);
-
-    enqueue(&pq, "Task A", 10);
-    enqueue(&pq, "Task B", 50);
-    enqueue(&pq, "Task C", 30);
-
-    printf("Top priority: %s\n", peek(pq));
-    char *top = dequeue(&pq);
-    printf("Dequeued: %s\n", top);
-    free(top);
-
-    clear(&pq);
-    return 0;
-}
 Notes
 The BST ensures O(log n) average complexity for insertion and removal (worst case: O(n) for unbalanced tree).
 
